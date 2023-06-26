@@ -11,7 +11,7 @@ export interface CepProps {
 }
 
 export class CEP extends Entity<CepProps> {
-	static create(
+	static register(
 		props: Optional<CepProps, 'created_at' | 'slug'>,
 		id?: UniqueEntityd
 	) {
@@ -37,5 +37,9 @@ export class CEP extends Entity<CepProps> {
 
 	get slug() {
 		return this.props.slug;
+	}
+
+	set slug(slug: Slug) {
+		this.props.slug = slug;
 	}
 }

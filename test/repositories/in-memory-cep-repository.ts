@@ -3,7 +3,7 @@ import { CEP } from '@/domain/cep/enterprise/entities/cep';
 
 export class InMemoryCepRepository implements CepRepository {
 	public items: CEP[] = [];
-	async create(cep: CEP): Promise<CEP> {
+	async register(cep: CEP): Promise<CEP> {
 		this.items.push(cep);
 		return cep;
 	}

@@ -1,13 +1,13 @@
 import { InMemoryCepRepository } from 'test/repositories/in-memory-cep-repository';
-import { CreateCepUseCase } from '../create-cep';
+import { RegisterCepUseCase } from '../register-cep';
 
 let cepRepository: InMemoryCepRepository;
-let sut: CreateCepUseCase;
+let sut: RegisterCepUseCase;
 
 describe('Create Cep', () => {
 	beforeEach(() => {
 		cepRepository = new InMemoryCepRepository();
-		sut = new CreateCepUseCase(cepRepository);
+		sut = new RegisterCepUseCase(cepRepository);
 	});
 
 	it('should be able to create a cep in system', async () => {

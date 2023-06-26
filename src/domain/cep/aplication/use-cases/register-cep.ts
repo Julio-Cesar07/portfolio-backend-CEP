@@ -2,31 +2,31 @@ import { Either, right } from '@/core/either';
 import { CepRepository } from '../repositories/cep-repository';
 import { CEP } from '../../enterprise/entities/cep';
 
-interface CreateCepUseCaseRequest {
+interface RegisterCepUseCaseRequest {
 	cep_number: string;
 	nickname: string;
 }
 
-type CreateCepUseCaseResponse = Either<
+type RegisterCepUseCaseResponse = Either<
 	null,
 	{
 		cep: CEP;
 	}
 >;
 
-export class CreateCepUseCase {
+export class RegisterCepUseCase {
 	constructor(private cepRepository: CepRepository) {}
 
 	async execute({
 		cep_number,
 		nickname,
-	}: CreateCepUseCaseRequest): Promise<CreateCepUseCaseResponse> {
-		const cep = CEP.create({
+	}: RegisterCepUseCaseRequest): Promise<RegisterCepUseCaseResponse> {
+		const cep = CEP.register({
 			cep: cep_number,
 			nickname,
 		});
 
-		this.cepRepository.create(cep);
+		this.cepRepository.register(cep);
 
 		return right({
 			cep,
